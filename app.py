@@ -84,7 +84,10 @@ def create_pdf(material_name, category, response_text, youtube_url):
 # -----------------------------
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = st.secrets.get(
+    "GEMINI_API_KEY",
+    os.getenv("GEMINI_API_KEY")
+)
 
 # Configure Gemini
 genai.configure(api_key=api_key)
